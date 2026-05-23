@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/bukkit-plugin.json
+
+name: GriefAlert
+version: 1.0
+main: com.bzvzn.griefalert.GriefAlert
+author: bzvzn
+api-version: '26.1.2'
+description: Informs ops and Discord if new players are using suspicious items

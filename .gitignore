@@ -1,0 +1,12 @@
+# Gradle
+.gradle/
+build/
+gradlew
+gradlew.bat
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Java
+*.class

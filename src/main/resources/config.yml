@@ -1,0 +1,24 @@
+# Playtime the player gets tracked
+playtime-threshold-minutes: 120
+
+# ========================================== #
+#             Discord Einstellungen          #
+# ========================================== #
+discord:
+  # Leave empty to disbale discord notification
+  webhook-url: ""
+  
+  # Design of Discord Message
+  embed-title: "🚨 Grief-Alarm triggered"
+  embed-color: "#FF0000" 
+  message-format: "**%player%** %action%!"
+
+
+# List of Material (Blocks and Items), that trigger the alarm
+# Use the official english Bukkit Material names in Capital Letters
+monitored-materials:
+  - TNT
+  - FLINT_AND_STEEL
+  - LAVA_BUCKET
+  - CREEPER_SPAWN_EGG
+  - END_CRYSTAL
