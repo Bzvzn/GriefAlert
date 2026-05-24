@@ -23,7 +23,7 @@ public class ChatNotifier {
         String readableWorld = worldKey.replace("minecraft:", "");
 
         // Build the clickable coordinates component
-        Component coordinates = Component.text("[" + readableWorld + " " + x + " " + y + " " + z + "]", NamedTextColor.AQUA)
+        Component coordinates = Component.text("[" + readableWorld + " x:" + x + ", y:" + y + ", z:" + z + "]", NamedTextColor.AQUA)
                 .hoverEvent(HoverEvent.showText(Component.text("Click to teleport!", NamedTextColor.GREEN)))
                 .clickEvent(ClickEvent.runCommand(tpCommand));
 

@@ -79,7 +79,7 @@ public class AlertListener implements Listener {
             int z = player.getLocation().getBlockZ();
             
             // 1. Format for Discord (Plain Text)
-            String discordAction = action + " [Playtime: " + playedMinutes + "m] [Loc: " + worldName + " " + x + " " + y + " " + z + "]";
+            String discordAction = action + " [Playtime: " + playedMinutes + "m] [Loc: " + worldName + " x:" + x + ", y:" + y + ", z:" + z + "]";
             discordNotifier.send(player.getName(), discordAction);
             
             // 2. Format for In-Game Chat (Pass raw data to build interactive components)
