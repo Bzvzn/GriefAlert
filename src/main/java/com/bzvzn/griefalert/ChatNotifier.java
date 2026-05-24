@@ -14,9 +14,7 @@ public class ChatNotifier {
         this.server = server;
     }
 
-    public void sendInteractive(String playerName, String action, int playtime, String worldKey, int x, int y, int z) {
-        
-        String worldName = worldKey.replace("minecraft:", "");
+    public void sendInteractive(String playerName, String action, int playtime, String worldName, int x, int y, int z) {
 
         String tpCommand = "/gatp " + worldName + " " + x + " " + y + " " + z;
 

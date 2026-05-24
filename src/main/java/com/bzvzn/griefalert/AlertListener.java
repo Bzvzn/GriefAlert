@@ -71,9 +71,6 @@ public class AlertListener implements Listener {
 
             String worldName = player.getWorld().getName();
             
-            // Get the exact dimension key for the safe teleport command (e.g., "minecraft:the_nether")
-            String worldKey = player.getWorld().getKey().asString();
-            
             int x = player.getLocation().getBlockX();
             int y = player.getLocation().getBlockY();
             int z = player.getLocation().getBlockZ();
@@ -83,7 +80,7 @@ public class AlertListener implements Listener {
             discordNotifier.send(player.getName(), discordAction);
             
             // 2. Format for In-Game Chat (Pass raw data to build interactive components)
-            chatNotifier.sendInteractive(player.getName(), action, playedMinutes, worldKey, x, y, z);
+            chatNotifier.sendInteractive(player.getName(), action, playedMinutes, worldName, x, y, z);
         }
     }
 }
