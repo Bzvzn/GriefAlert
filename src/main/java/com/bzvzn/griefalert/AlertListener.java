@@ -24,18 +24,18 @@ public class AlertListener implements Listener {
         this.chatNotifier = chatNotifier;
         this.discordNotifier = discordNotifier;
         
-        // Minutes to tick (1 second = 20 ticks)
+        // Convert minutes to ticks (1 second = 20 ticks, 1 minute = 1200 ticks)
         this.playtimeThresholdTicks = playtimeThresholdMinutes * 1200;
         
         this.monitoredMaterials = EnumSet.noneOf(Material.class);
         
-        //Convert list of material to real material data
+        // Convert string list from config to actual Material enums
         for (String matName : configMaterials) {
             try {
                 Material material = Material.valueOf(matName.toUpperCase());
                 this.monitoredMaterials.add(material);
             } catch (IllegalArgumentException e) {
-                logger.warning("Unknow Material found in config.yaml. Skipping it: " + matName);
+                logger.warning("Unknown Material found in config.yml. Skipping it: " + matName);
             }
         }
     }
@@ -56,7 +56,7 @@ public class AlertListener implements Listener {
                 Material usedItem = event.getItem().getType();
                 
                 if (monitoredMaterials.contains(usedItem)) {
-                    checkAndAlert(event.getPlayer(), "uses " + usedItem.name());
+                    checkAndAlert(event.getPlayer(), "used " + usedItem.name());
                 }
             }
         }
@@ -66,19 +66,24 @@ public class AlertListener implements Listener {
         int playtimeTicks = player.getStatistic(Statistic.PLAY_ONE_MINUTE);
         
         if (playtimeTicks < playtimeThresholdTicks) {
-            // Convert ticks back to readable minutes (1 minute = 1200 ticks)
+            // Convert ticks back to readable minutes
             int playedMinutes = playtimeTicks / 1200;
 
             String worldName = player.getWorld().getName();
+            
+            // Get the exact dimension key for the safe teleport command (e.g., "minecraft:the_nether")
+            String worldKey = player.getWorld().getKey().asString();
+            
             int x = player.getLocation().getBlockX();
             int y = player.getLocation().getBlockY();
             int z = player.getLocation().getBlockZ();
             
-            // Append the playtime to the action string
-            String detailedAction = action + " [Playtime: " + playedMinutes + "m] [Loc: " + worldName + " " + x + " " + y + " " + z + "]";
+            // 1. Format for Discord (Plain Text)
+            String discordAction = action + " [Playtime: " + playedMinutes + "m] [Loc: " + worldName + " " + x + " " + y + " " + z + "]";
+            discordNotifier.send(player.getName(), discordAction);
             
-            chatNotifier.send(player, detailedAction);
-            discordNotifier.send(player.getName(), detailedAction);
+            // 2. Format for In-Game Chat (Pass raw data to build interactive components)
+            chatNotifier.sendInteractive(player.getName(), action, playedMinutes, worldKey, x, y, z);
         }
     }
 }

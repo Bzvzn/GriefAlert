@@ -2,7 +2,7 @@
 playtime-threshold-minutes: 120
 
 # ========================================== #
-#             Discord Einstellungen          #
+#             Discord Settings               #
 # ========================================== #
 discord:
   # Leave empty to disbale discord notification
