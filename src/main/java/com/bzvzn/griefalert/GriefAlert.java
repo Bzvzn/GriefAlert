@@ -35,6 +35,10 @@ public class GriefAlert extends JavaPlugin {
                 getLogger()
         );
 
+        if (getCommand("gatp") != null) {
+            getCommand("gatp").setExecutor(new GatpCommand());
+        }
+
         // 5. Register the listener with the server to start handling events
         getServer().getPluginManager().registerEvents(listener, this);
 

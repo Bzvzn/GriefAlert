@@ -6,3 +6,8 @@ main: com.bzvzn.griefalert.GriefAlert
 author: bzvzn
 api-version: '26.1.2'
 description: Informs ops and Discord if new players are using suspicious items
+commands:
+  gatp:
+    description: Internal command to teleport to grief locations.
+    permission: griefalert.notify
+    usage: /gatp <world> <x> <y> <z>
