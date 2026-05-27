@@ -65,7 +65,7 @@ public class DiscordNotifier {
 
         httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .exceptionally(e -> {
-                    logger.warning("Konnte Discord-Nachricht nicht senden: " + e.getMessage());
+                    logger.warning("Could not send Discord Message: " + e.getMessage());
                     return null;
                 });
     }

@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/bukkit-plugin.json
 
 name: GriefAlert
-version: 1.1
+version: 1.2
 main: com.bzvzn.griefalert.GriefAlert
 author: bzvzn
 api-version: '26.1.2'

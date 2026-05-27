@@ -1,6 +1,8 @@
 # Playtime the player gets tracked
 playtime-threshold-minutes: 120
 
+cooldown-seconds: 2
+
 # ========================================== #
 #             Discord Settings               #
 # ========================================== #

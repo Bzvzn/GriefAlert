@@ -15,10 +15,11 @@ public class GriefAlert extends JavaPlugin {
 
         // 2. Retrieve values from the config
         int playtimeThreshold = getConfig().getInt("playtime-threshold-minutes", 120);
+        int cooldownSeconds = getConfig().getInt("cooldown-seconds", 2);
         List<String> monitoredMaterials = getConfig().getStringList("monitored-materials");
         
         String discordUrl = getConfig().getString("discord.webhook-url", "");
-        String discordTitle = getConfig().getString("discord.embed-title", "🚨 Grief-Alarm ausgelöst");
+        String discordTitle = getConfig().getString("discord.embed-title", "🚨 Grief-Alarm triggered");
         String discordFormat = getConfig().getString("discord.message-format", "**%player%** %action%!");
         String discordColor = getConfig().getString("discord.embed-color", "#FF0000");
 
@@ -32,6 +33,7 @@ public class GriefAlert extends JavaPlugin {
                 discordNotifier,
                 playtimeThreshold,
                 monitoredMaterials,
+                cooldownSeconds,
                 getLogger()
         );
 
